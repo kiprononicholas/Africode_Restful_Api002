@@ -134,15 +134,6 @@ class post(Resource):
         db.session.commit()
         return post,200
     
-    @marshal_with(postFields)
-    def delete(self, id):
-        post = PostModel.query.filter_by(id=id).first()
-        if not post:
-            abort(404, message=f"Post with ID {id} not found")
-        db.session.delete(post)
-        db.session.commit()
-        posts = PostModel.query.all()
-        return posts,200
     
 
 
